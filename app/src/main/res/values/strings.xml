@@ -4,4 +4,8 @@
     <string name="progress_dialog_title">Please wait</string>
     <string name="progress_dialog_content">Its loading....</string>
 
+    <string name="user_details_name">Nom :</string>
+    <string name="user_details_description">Description :</string>
+    <string name="user_details_hired">Hired :</string>
+
 </resources>

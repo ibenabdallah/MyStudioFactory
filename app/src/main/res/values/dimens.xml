@@ -2,4 +2,9 @@
 <resources>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="recycle_view_margin">16dp</dimen>
+    <dimen name="dimen_5">5dp</dimen>
+    <dimen name="dimen_10">10dp</dimen>
+    <dimen name="dimen_20">20dp</dimen>
+    <dimen name="dimen_25">25dp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
 </resources>
