@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyStudioFactory</string>
+
+    <string name="progress_dialog_title">Please wait</string>
+    <string name="progress_dialog_content">Its loading....</string>
+
 </resources>
