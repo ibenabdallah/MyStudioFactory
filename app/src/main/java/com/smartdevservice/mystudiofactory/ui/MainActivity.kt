@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity() , OnUserListener {
             myDialog.dismiss()
         })
 
+        userViewModel.isNetworking.observe(this, Observer {
+            Timber.d("isNetworking = $it")
+            myDialog.dismiss()
+        })
+
         myDialog.show()
 
     }

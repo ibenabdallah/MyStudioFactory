@@ -47,5 +47,5 @@ val domainModule = module {
 }
 
 val vmModule = module {
-    viewModel { UserViewModel(get(), get()) }
+    viewModel { UserViewModel(get(), get(), get()) }
 }
