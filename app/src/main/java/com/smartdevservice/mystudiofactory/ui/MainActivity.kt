@@ -42,7 +42,10 @@ class MainActivity : AppCompatActivity() , OnUserListener {
 
     override fun onUserClick(user: User) {
         Timber.d("user = $user")
-
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.container_fragment, DetailsUserFragment.newInstance(user.id))
+            .addToBackStack("DetailsUserFragment")
+            .commit()
     }
 
     private inline fun createDialog(func: MySFDialogHelper.() -> Unit): AlertDialog {

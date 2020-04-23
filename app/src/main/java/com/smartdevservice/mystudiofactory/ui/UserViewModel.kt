@@ -72,4 +72,16 @@ class UserViewModel(
             }
         }
     }
+
+    fun findUserById(userId: String?) {
+        Timber.d("finUserById, userId = $userId")
+        _usersState.value?.users?.let {
+            for (user in it) {
+                if (user.id == userId) {
+                    _user.value = user
+                    break
+                }
+            }
+        }
+    }
 }
