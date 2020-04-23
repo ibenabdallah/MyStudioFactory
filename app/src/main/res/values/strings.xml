@@ -8,4 +8,8 @@
     <string name="user_details_description">Description :</string>
     <string name="user_details_hired">Hired :</string>
 
+    <string name="dialog_network_title">Networking</string>
+    <string name="dialog_network_content">You are offline please check your connection</string>
+    <string name="dialog_ok">OK</string>
+
 </resources>

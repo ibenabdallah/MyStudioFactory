@@ -1,10 +1,12 @@
 package com.smartdevservice.mystudiofactory.ui
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.smartdevservice.mystudiofactory.data.repository.UsersRepositoryImp
 import com.smartdevservice.mystudiofactory.domain.User
 import com.smartdevservice.mystudiofactory.framework.viewmodel.BaseViewModel
+import com.smartdevservice.mystudiofactory.ui.utils.NetworkUtils
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -24,6 +26,7 @@ class MyViewModelStateSuccess(users: List<User>?) : MyViewModelStateSealed(users
 object MyViewModelStateNotFound : MyViewModelStateSealed()
 
 class UserViewModel(
+    private val context: Context,
     private val usersRepository: UsersRepositoryImp,
     dispatcher: CoroutineDispatcher
 ) : BaseViewModel(dispatcher) {
@@ -34,11 +37,15 @@ class UserViewModel(
     private val _user = MutableLiveData<User?>()
     val user: LiveData<User?> get() = _user
 
+    private val _isNetworking = MutableLiveData<Boolean>()
+    val isNetworking: LiveData<Boolean> get() = _isNetworking
 
     init {
         launch {
             Timber.d("init::launch")
-
+            if (!NetworkUtils.isConnectingToInternet(context)) {
+                _isNetworking.value = false
+            }
             val users = usersRepository.getAllUsers()
 
             when {
@@ -57,8 +64,12 @@ class UserViewModel(
 
     fun syncFullUser() {
 
-        Timber.d("syncFullUser::launch")
+        if (!NetworkUtils.isConnectingToInternet(context)) {
+            _isNetworking.value = false
+            return
+        }
         launch {
+            Timber.d("syncFullUser::launch")
             val users = usersRepository.syncFullUser()
             when {
                 users.isNullOrEmpty() -> {

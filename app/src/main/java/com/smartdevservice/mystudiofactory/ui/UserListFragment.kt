@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import com.smartdevservice.mystudiofactory.R
+import com.smartdevservice.mystudiofactory.ui.utils.MySFDialogHelper
 import kotlinx.android.synthetic.main.fragment_user.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
@@ -50,6 +52,18 @@ class UserListFragment : Fragment() {
             updateUI(it)
         })
 
+        userViewModel.isNetworking.observe(viewLifecycleOwner, Observer {
+            Timber.d("isNetworking = $it")
+            swipeRefresh?.isRefreshing = false
+            createDialog {
+                setCancelable(true)
+                setTitle(R.string.dialog_network_title)
+                setDescription(R.string.dialog_network_content)
+                setPositiveButton(R.string.dialog_ok) {
+                    dialog?.dismiss()
+                }
+            }.show()
+        })
 
         swipeRefresh.setOnRefreshListener{
             Timber.d("Start Swipe Refresh")
@@ -87,6 +101,13 @@ class UserListFragment : Fragment() {
         if(context is OnUserListener) {
             listener = context
         }
+    }
+
+
+    private inline fun createDialog(func: MySFDialogHelper.() -> Unit): AlertDialog {
+        return MySFDialogHelper(
+            context!!
+        ).apply { func() }.create()
     }
 
     companion object {
