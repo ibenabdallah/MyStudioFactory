@@ -14,7 +14,7 @@ Mail: benabdallahismail121@gmail.com
 Linkedin: https://www.linkedin.com/in/baismail
 
 
-## Architecture ::
+## Architecture AND Choix techniques ::
 Clean Architecture : Elle réduire les dépendances de logique métier avec les services que l'app consomme (API, Base de données, Framework, Librairies tierces), et pour maintenir une application stable au cours de ses évolutions, de ses tests mais également lors de changements ou mises à jour des ressources externes.
 
 Coroutines Kotlin  : Elle fournissent une API qui vous permez d'écrire du code asynchrone. Avec les coroutines Kotlin, vous pouvez définir unCoroutineScope  qui vous aide à gérer quand vos coroutines doivent s'exécuter. Chaque opération asynchrone s'exécute dans une étendue particulière.
@@ -33,12 +33,19 @@ https://developer.android.com/jetpack/docs/guide
 
 # Open Source Libraries ::
 Kotlin      : https://kotlinlang.org
+
 Gson        : https://github.com/google/gson
+
 Retrofit    : https://square.github.io/retrofit
+
 OkHttp      : https://square.github.io/okhttp
+
 Koin        : https://github.com/InsertKoinIO/koin
+
 Coroutines  : https://github.com/Kotlin/kotlinx.coroutines
+
 Timber      : https://github.com/JakeWharton/timber
+
 Glide       : https://bumptech.github.io/glide/
 
 
